@@ -19,6 +19,8 @@
 		CE3F168D1E32C0560032ADBF /* MarketFoxAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3F168C1E32C0560032ADBF /* MarketFoxAPI.m */; };
 		CE3F168E1E32C4060032ADBF /* libMarketFox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE3F165E1E32B8240032ADBF /* libMarketFox.a */; };
 		CE3F16911E33A9500032ADBF /* MarketFoxPersistance.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3F16901E33A9500032ADBF /* MarketFoxPersistance.m */; };
+		CE3F16941E33CC810032ADBF /* MarketFoxUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3F16931E33CC810032ADBF /* MarketFoxUtil.m */; };
+		CE3F16971E33CE060032ADBF /* MarketFoxLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3F16961E33CE060032ADBF /* MarketFoxLocationManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +58,10 @@
 		CE3F168C1E32C0560032ADBF /* MarketFoxAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketFoxAPI.m; sourceTree = "<group>"; };
 		CE3F168F1E33A9500032ADBF /* MarketFoxPersistance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketFoxPersistance.h; sourceTree = "<group>"; };
 		CE3F16901E33A9500032ADBF /* MarketFoxPersistance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketFoxPersistance.m; sourceTree = "<group>"; };
+		CE3F16921E33CC810032ADBF /* MarketFoxUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketFoxUtil.h; sourceTree = "<group>"; };
+		CE3F16931E33CC810032ADBF /* MarketFoxUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketFoxUtil.m; sourceTree = "<group>"; };
+		CE3F16951E33CE060032ADBF /* MarketFoxLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketFoxLocationManager.h; sourceTree = "<group>"; };
+		CE3F16961E33CE060032ADBF /* MarketFoxLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketFoxLocationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,11 +106,15 @@
 			children = (
 				CE3F16611E32B8240032ADBF /* MarketFox.h */,
 				CE3F16631E32B8240032ADBF /* MarketFox.m */,
+				CE3F16951E33CE060032ADBF /* MarketFoxLocationManager.h */,
+				CE3F16961E33CE060032ADBF /* MarketFoxLocationManager.m */,
 				CE3F168F1E33A9500032ADBF /* MarketFoxPersistance.h */,
 				CE3F16901E33A9500032ADBF /* MarketFoxPersistance.m */,
 				CE3F168B1E32C0560032ADBF /* MarketFoxAPI.h */,
 				CE3F168C1E32C0560032ADBF /* MarketFoxAPI.m */,
 				CE3F168A1E32BF440032ADBF /* MarketFoxConstants.h */,
+				CE3F16921E33CC810032ADBF /* MarketFoxUtil.h */,
+				CE3F16931E33CC810032ADBF /* MarketFoxUtil.m */,
 				CE3F16881E32B89C0032ADBF /* Network */,
 			);
 			path = MarketFox;
@@ -238,6 +248,8 @@
 				CE3F168D1E32C0560032ADBF /* MarketFoxAPI.m in Sources */,
 				CE3F16641E32B8240032ADBF /* MarketFox.m in Sources */,
 				CE3F16871E32B87F0032ADBF /* MFConnectionProvider.m in Sources */,
+				CE3F16941E33CC810032ADBF /* MarketFoxUtil.m in Sources */,
+				CE3F16971E33CE060032ADBF /* MarketFoxLocationManager.m in Sources */,
 				CE3F16911E33A9500032ADBF /* MarketFoxPersistance.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,6 +15,12 @@ static  NSString    *const  kMFCustomerID       =   @"MF_CUSTOMER_KEY";
 
 static  NSString    *const  kAppID              =   @"app_id";
 static  NSString    *const  kSessionID          =   @"user_session_key";
+static  NSString    *const  kLocationLatitude   =   @"lat";
+static  NSString    *const  kLocationLongitude  =   @"long";
+static  NSString    *const  kTimeZoneOffset     =   @"timezone";
+static  NSString    *const  kLanguage           =   @"language";
+static  NSString    *const  kCarrier            =   @"carrier";
+static  NSString    *const  kEmail              =   @"customer_email";
 static  NSString    *const  kEventName          =   @"event_name";
 static  NSString    *const  kEventValue         =   @"event_value";
 

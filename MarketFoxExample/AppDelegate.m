@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import <CoreLocation/CoreLocation.h>
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#import <CoreTelephony/CTCarrier.h>
 
 @interface AppDelegate ()
 
@@ -17,7 +20,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
     return YES;
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

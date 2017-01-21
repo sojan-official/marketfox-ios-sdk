@@ -8,8 +8,17 @@
 
 #import "MarketFox.h"
 #import "MarketFoxAPI.h"
+#import "MarketFoxLocationManager.h"
 #import "MarketFoxPersistance.h"
 #import "MarketFoxConstants.h"
+#import "MarketFoxUtil.h"
+
+@interface MarketFox ()<MarketFoxLocationManagerDelegate>
+
+@property   (nonatomic,assign)  double  latitude;
+@property   (nonatomic,assign)  double  longitude;
+
+@end
 
 @implementation MarketFox
 
@@ -29,6 +38,12 @@
     {
         [[MarketFoxPersistance persistanceInstance] saveObject:[self generateUniqueCustomerID] forKey:kMFCustomerID];
         
+        [MarketFoxLocationManager locationManagerInstance].delegate =   self;
+        
+        self.latitude   =   0;
+        
+        self.longitude  =   0;
+        
         [self addCustomerDetail];
     }
     return self;
@@ -43,6 +58,20 @@
     [dictionary setObject:[self getAppID] forKey:kAppID];
     
     [dictionary setObject:[self getCustomerID] forKey:kSessionID];
+    
+    if(self.latitude){
+        [dictionary setObject:[NSNumber numberWithDouble:self.latitude] forKey:kLocationLatitude];
+    }
+    
+    if(self.longitude){
+        [dictionary setObject:[NSNumber numberWithDouble:self.longitude] forKey:kLocationLongitude];
+    }
+    
+    [dictionary setObject:[NSNumber numberWithInteger:[MarketFoxUtil getTimeZoneOffset]] forKey:kTimeZoneOffset];
+    
+    [dictionary setObject:[MarketFoxUtil getCorrectedLanguage] forKey:kLanguage];
+    
+    [dictionary setObject:[MarketFoxUtil carrierName] forKey:kCarrier];
     
     [[MarketFoxAPI apiInstance] addCustomer:dictionary success:^{
         
@@ -88,6 +117,12 @@
 
 - (NSString *)getCustomerID{
     return [[MarketFoxPersistance persistanceInstance] objectForKey:kMFCustomerID];
+}
+
+- (void)updateLocation:(double)latitude longitude:(double)longitude{
+    self.latitude   =   latitude;
+    self.longitude  =   longitude;
+    [self addCustomerDetail];
 }
 
 @end
