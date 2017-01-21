@@ -9,6 +9,13 @@
 #ifndef MarketFoxConstants_h
 #define MarketFoxConstants_h
 
-#define MARKET_FOX_APP_ID   @"afca0c07e838be41b3000f0af0fd881de032fb58eb752584d66427099d98f5c3"
+static  NSString    *const  kMarketFoxAppID     =   @"MarketFoxAppId";
+
+static  NSString    *const  kMFCustomerID       =   @"MF_CUSTOMER_KEY";
+
+static  NSString    *const  kAppID              =   @"app_id";
+static  NSString    *const  kSessionID          =   @"user_session_key";
+static  NSString    *const  kEventName          =   @"event_name";
+static  NSString    *const  kEventValue         =   @"event_value";
 
 #endif /* MarketFoxConstants_h */

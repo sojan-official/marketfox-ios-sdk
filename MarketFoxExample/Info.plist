@@ -43,5 +43,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>MarketFoxAppId</key>
+	<string>afca0c07e838be41b3000f0af0fd881de032fb58eb752584d66427099d98f5c3</string>
 </dict>
 </plist>

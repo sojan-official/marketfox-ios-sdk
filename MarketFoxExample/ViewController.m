@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "MarketFox.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+- (IBAction)subscribeToMarketFox:(id)sender {
+    
+    [[MarketFox instance] postEvent:@"clicked_subscribe" value:@"1"];
+    
+}
+- (IBAction)unsubscribeToMarketFox:(id)sender {
+    
+    [[MarketFox instance] postEvent:@"clicked_unsubscribe" value:@"1"];
 }
 
 - (void)didReceiveMemoryWarning {

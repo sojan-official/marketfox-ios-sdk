@@ -12,4 +12,6 @@
 
 + (instancetype)instance;
 
+- (void)postEvent:(NSString *)name value:(NSString *)value;
+
 @end

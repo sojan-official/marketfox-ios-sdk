@@ -8,6 +8,7 @@
 
 #import "MarketFox.h"
 #import "MarketFoxAPI.h"
+#import "MarketFoxPersistance.h"
 #import "MarketFoxConstants.h"
 
 @implementation MarketFox
@@ -26,6 +27,8 @@
 - (id)init{
     self    =   [super init];
     {
+        [[MarketFoxPersistance persistanceInstance] saveObject:[self generateUniqueCustomerID] forKey:kMFCustomerID];
+        
         [self addCustomerDetail];
     }
     return self;
@@ -33,23 +36,43 @@
 
 - (void)addCustomerDetail{
     
-    MarketFoxAPI *api   =   [MarketFoxAPI new];
+    NSAssert([self getAppID], @"Configure MarketFox to post events");
     
     NSMutableDictionary *dictionary =   [NSMutableDictionary dictionary];
     
-    [dictionary setObject:MARKET_FOX_APP_ID forKey:@"app_id"];
+    [dictionary setObject:[self getAppID] forKey:kAppID];
     
-    [dictionary setObject:[self customerUniqueId] forKey:@"user_session_key"];
+    [dictionary setObject:[self getCustomerID] forKey:kSessionID];
     
-    [api addCustomer:dictionary success:^{
+    [[MarketFoxAPI apiInstance] addCustomer:dictionary success:^{
         
     } failure:^{
         
     }];
-    
 }
 
-- (NSString *)customerUniqueId{
+- (void)postEvent:(NSString *)name value:(NSString *)value{
+    
+    NSAssert([self getAppID], @"Configure MarketFox to post events");
+    
+    NSMutableDictionary *dictionary =   [NSMutableDictionary dictionary];
+    
+    [dictionary setObject:[self getAppID] forKey:kAppID];
+    
+    [dictionary setObject:[self getCustomerID] forKey:kSessionID];
+    
+    [dictionary setObject:name forKey:kEventName];
+    
+    [dictionary setObject:value forKey:kEventValue];
+    
+    [[MarketFoxAPI apiInstance] addEvent:dictionary success:^{
+        
+    } failure:^{
+        
+    }];
+}
+
+- (NSString *)generateUniqueCustomerID{
     NSMutableString *string =   [NSMutableString string];
     
     [string appendFormat:@"%@",[NSUUID UUID]];
@@ -57,6 +80,14 @@
     [string appendFormat:@"%lf",[NSDate timeIntervalSinceReferenceDate]];
     
     return string;
+}
+
+- (NSString *)getAppID{
+    return [[NSBundle mainBundle]objectForInfoDictionaryKey:kMarketFoxAppID];
+}
+
+- (NSString *)getCustomerID{
+    return [[MarketFoxPersistance persistanceInstance] objectForKey:kMFCustomerID];
 }
 
 @end
