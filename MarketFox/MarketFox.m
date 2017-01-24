@@ -15,8 +15,9 @@
 
 @interface MarketFox ()<MarketFoxLocationManagerDelegate>
 
-@property   (nonatomic,assign)  double  latitude;
-@property   (nonatomic,assign)  double  longitude;
+@property   (nonatomic,assign)  double      latitude;
+@property   (nonatomic,assign)  double      longitude;
+@property   (nonatomic,strong)  NSString    *deviceToken;
 
 @end
 
@@ -67,6 +68,10 @@
         [dictionary setObject:[NSNumber numberWithDouble:self.longitude] forKey:kLocationLongitude];
     }
     
+    if(self.deviceToken){
+        [dictionary setObject:self.deviceToken forKey:kAPNSID];
+    }
+    
     [dictionary setObject:[NSNumber numberWithInteger:[MarketFoxUtil getTimeZoneOffset]] forKey:kTimeZoneOffset];
     
     [dictionary setObject:[MarketFoxUtil getCorrectedLanguage] forKey:kLanguage];
@@ -104,7 +109,7 @@
 - (NSString *)generateUniqueCustomerID{
     NSMutableString *string =   [NSMutableString string];
     
-    [string appendFormat:@"%@",[NSUUID UUID]];
+    [string appendFormat:@"%@",[NSUUID UUID].UUIDString];
     
     [string appendFormat:@"%lf",[NSDate timeIntervalSinceReferenceDate]];
     
@@ -122,6 +127,12 @@
 - (void)updateLocation:(double)latitude longitude:(double)longitude{
     self.latitude   =   latitude;
     self.longitude  =   longitude;
+    [self addCustomerDetail];
+}
+
+- (void)updateDeviceToken:(NSData *)deviceToken{
+    
+    self.deviceToken    =  [MarketFoxUtil hexadecimalStringFromData:deviceToken];
     [self addCustomerDetail];
 }
 

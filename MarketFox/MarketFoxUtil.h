@@ -16,4 +16,6 @@
 
 + (NSString *)carrierName;
 
++ (NSString *)hexadecimalStringFromData:(NSData *)data;
+
 @end

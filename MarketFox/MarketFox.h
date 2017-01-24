@@ -14,4 +14,6 @@
 
 - (void)postEvent:(NSString *)name value:(NSString *)value;
 
+- (void)updateDeviceToken:(NSData *)deviceToken;
+
 @end
