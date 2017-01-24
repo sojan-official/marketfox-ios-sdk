@@ -109,9 +109,9 @@
 - (NSString *)generateUniqueCustomerID{
     NSMutableString *string =   [NSMutableString string];
     
-    [string appendFormat:@"%@",[NSUUID UUID].UUIDString];
+    [string appendFormat:@"%@",[[NSUUID UUID].UUIDString stringByReplacingOccurrencesOfString:@"-" withString:@""]];
     
-    [string appendFormat:@"%lf",[NSDate timeIntervalSinceReferenceDate]];
+    [string appendFormat:@"%ld",lround([NSDate timeIntervalSinceReferenceDate])];
     
     return string;
 }
