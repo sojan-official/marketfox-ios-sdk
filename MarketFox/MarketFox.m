@@ -10,8 +10,10 @@
 #import "MarketFoxAPI.h"
 #import "MarketFoxLocationManager.h"
 #import "MarketFoxPersistance.h"
+#import "MarketFoxNotificationHandler.h"
 #import "MarketFoxConstants.h"
 #import "MarketFoxUtil.h"
+
 
 @interface MarketFox ()<MarketFoxLocationManagerDelegate>
 
@@ -134,6 +136,14 @@
     
     self.deviceToken    =  [MarketFoxUtil hexadecimalStringFromData:deviceToken];
     [self addCustomerDetail];
+}
+
+- (NSSet *)configureMarketFoxNotificationCategories{
+    return [MarketFoxNotificationHandler marketFoxCategory];
+}
+
+- (BOOL)isMarketFoxNotification:(NSDictionary *)userInfo{
+    return [MarketFoxNotificationHandler isMarketFoxNotification:userInfo];
 }
 
 @end

@@ -16,4 +16,8 @@
 
 - (void)updateDeviceToken:(NSData *)deviceToken;
 
+- (NSSet *)configureMarketFoxNotificationCategories;
+
+- (BOOL)isMarketFoxNotification:(NSDictionary *)userInfo;
+
 @end

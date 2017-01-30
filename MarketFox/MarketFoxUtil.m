@@ -9,6 +9,7 @@
 #import "MarketFoxUtil.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
+#import <UIKit/UIDevice.h>
 
 @implementation MarketFoxUtil
 
@@ -61,5 +62,8 @@
     return hexString;
 }
 
++ (BOOL)isDeviceVersionGreaterThanOrEqual:(NSInteger)version{
+    return ([[UIDevice currentDevice].systemVersion integerValue]>=version)?YES:NO;
+}
 
 @end

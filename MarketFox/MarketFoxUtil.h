@@ -18,4 +18,6 @@
 
 + (NSString *)hexadecimalStringFromData:(NSData *)data;
 
++ (BOOL)isDeviceVersionGreaterThanOrEqual:(NSInteger)version;
+
 @end

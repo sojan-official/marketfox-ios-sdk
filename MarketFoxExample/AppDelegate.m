@@ -10,8 +10,10 @@
 #import <CoreLocation/CoreLocation.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
+#import <UserNotifications/UserNotifications.h>
+#import "Util.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
 @end
 
@@ -65,7 +67,24 @@
 
 - (void)registerForPushNotification{
     [[UIApplication sharedApplication] registerForRemoteNotifications];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge categories:nil]];
+    
+    if([Util isDeviceVersionGreaterThanOrEqual:10]){
+        [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionAlert|UNAuthorizationOptionSound completionHandler:^(BOOL granted, NSError * _Nullable error) {
+           
+            [UNUserNotificationCenter currentNotificationCenter].delegate   =   (AppDelegate *)[UIApplication sharedApplication].delegate;
+        }];
+    }
+    else{
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:[[MarketFox instance] configureMarketFoxNotificationCategories]]];
+    }
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
+    
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+    
 }
 
 @end

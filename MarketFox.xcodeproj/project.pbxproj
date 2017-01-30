@@ -21,6 +21,9 @@
 		CE3F16911E33A9500032ADBF /* MarketFoxPersistance.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3F16901E33A9500032ADBF /* MarketFoxPersistance.m */; };
 		CE3F16941E33CC810032ADBF /* MarketFoxUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3F16931E33CC810032ADBF /* MarketFoxUtil.m */; };
 		CE3F16971E33CE060032ADBF /* MarketFoxLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3F16961E33CE060032ADBF /* MarketFoxLocationManager.m */; };
+		CEDDFBC41E3FC48400182A18 /* MarketFoxNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDDFBC31E3FC48400182A18 /* MarketFoxNotificationHandler.m */; };
+		CEDDFBC71E3FD24C00182A18 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDDFBC61E3FD24C00182A18 /* Util.m */; };
+		CEDDFBD01E3FDA3500182A18 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDDFBCF1E3FDA3500182A18 /* NotificationService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +65,14 @@
 		CE3F16931E33CC810032ADBF /* MarketFoxUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketFoxUtil.m; sourceTree = "<group>"; };
 		CE3F16951E33CE060032ADBF /* MarketFoxLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketFoxLocationManager.h; sourceTree = "<group>"; };
 		CE3F16961E33CE060032ADBF /* MarketFoxLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketFoxLocationManager.m; sourceTree = "<group>"; };
+		CEDDFBC21E3FC48400182A18 /* MarketFoxNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketFoxNotificationHandler.h; sourceTree = "<group>"; };
+		CEDDFBC31E3FC48400182A18 /* MarketFoxNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketFoxNotificationHandler.m; sourceTree = "<group>"; };
+		CEDDFBC51E3FD24C00182A18 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		CEDDFBC61E3FD24C00182A18 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		CEDDFBCC1E3FDA3500182A18 /* MarketFoxNotificationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MarketFoxNotificationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEDDFBCE1E3FDA3500182A18 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		CEDDFBCF1E3FDA3500182A18 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		CEDDFBD11E3FDA3500182A18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +91,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CEDDFBC91E3FDA3500182A18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -88,6 +106,7 @@
 			children = (
 				CE3F16601E32B8240032ADBF /* MarketFox */,
 				CE3F166F1E32B8450032ADBF /* MarketFoxExample */,
+				CEDDFBCD1E3FDA3500182A18 /* MarketFoxNotificationExtension */,
 				CE3F165F1E32B8240032ADBF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,6 +116,7 @@
 			children = (
 				CE3F165E1E32B8240032ADBF /* libMarketFox.a */,
 				CE3F166E1E32B8450032ADBF /* MarketFoxExample.app */,
+				CEDDFBCC1E3FDA3500182A18 /* MarketFoxNotificationExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,6 +135,8 @@
 				CE3F168A1E32BF440032ADBF /* MarketFoxConstants.h */,
 				CE3F16921E33CC810032ADBF /* MarketFoxUtil.h */,
 				CE3F16931E33CC810032ADBF /* MarketFoxUtil.m */,
+				CEDDFBC21E3FC48400182A18 /* MarketFoxNotificationHandler.h */,
+				CEDDFBC31E3FC48400182A18 /* MarketFoxNotificationHandler.m */,
 				CE3F16881E32B89C0032ADBF /* Network */,
 			);
 			path = MarketFox;
@@ -127,6 +149,8 @@
 				CE3F16741E32B8450032ADBF /* AppDelegate.m */,
 				CE3F16761E32B8450032ADBF /* ViewController.h */,
 				CE3F16771E32B8450032ADBF /* ViewController.m */,
+				CEDDFBC51E3FD24C00182A18 /* Util.h */,
+				CEDDFBC61E3FD24C00182A18 /* Util.m */,
 				CE3F16791E32B8450032ADBF /* Main.storyboard */,
 				CE3F167C1E32B8450032ADBF /* Assets.xcassets */,
 				CE3F167E1E32B8450032ADBF /* LaunchScreen.storyboard */,
@@ -152,6 +176,16 @@
 				CE3F16891E32B8D10032ADBF /* MFConnectionProviderConstants.h */,
 			);
 			name = Network;
+			sourceTree = "<group>";
+		};
+		CEDDFBCD1E3FDA3500182A18 /* MarketFoxNotificationExtension */ = {
+			isa = PBXGroup;
+			children = (
+				CEDDFBCE1E3FDA3500182A18 /* NotificationService.h */,
+				CEDDFBCF1E3FDA3500182A18 /* NotificationService.m */,
+				CEDDFBD11E3FDA3500182A18 /* Info.plist */,
+			);
+			path = MarketFoxNotificationExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +225,23 @@
 			productReference = CE3F166E1E32B8450032ADBF /* MarketFoxExample.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CEDDFBCB1E3FDA3500182A18 /* MarketFoxNotificationExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEDDFBD21E3FDA3500182A18 /* Build configuration list for PBXNativeTarget "MarketFoxNotificationExtension" */;
+			buildPhases = (
+				CEDDFBC81E3FDA3500182A18 /* Sources */,
+				CEDDFBC91E3FDA3500182A18 /* Frameworks */,
+				CEDDFBCA1E3FDA3500182A18 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MarketFoxNotificationExtension;
+			productName = MarketFoxNotificationExtension;
+			productReference = CEDDFBCC1E3FDA3500182A18 /* MarketFoxNotificationExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -212,6 +263,10 @@
 							};
 						};
 					};
+					CEDDFBCB1E3FDA3500182A18 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = CE3F16591E32B8240032ADBF /* Build configuration list for PBXProject "MarketFox" */;
@@ -229,6 +284,7 @@
 			targets = (
 				CE3F165D1E32B8240032ADBF /* MarketFox */,
 				CE3F166D1E32B8450032ADBF /* MarketFoxExample */,
+				CEDDFBCB1E3FDA3500182A18 /* MarketFoxNotificationExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -244,6 +300,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CEDDFBCA1E3FDA3500182A18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -255,6 +318,7 @@
 				CE3F16641E32B8240032ADBF /* MarketFox.m in Sources */,
 				CE3F16871E32B87F0032ADBF /* MFConnectionProvider.m in Sources */,
 				CE3F16941E33CC810032ADBF /* MarketFoxUtil.m in Sources */,
+				CEDDFBC41E3FC48400182A18 /* MarketFoxNotificationHandler.m in Sources */,
 				CE3F16971E33CE060032ADBF /* MarketFoxLocationManager.m in Sources */,
 				CE3F16911E33A9500032ADBF /* MarketFoxPersistance.m in Sources */,
 			);
@@ -267,6 +331,15 @@
 				CE3F16781E32B8450032ADBF /* ViewController.m in Sources */,
 				CE3F16751E32B8450032ADBF /* AppDelegate.m in Sources */,
 				CE3F16721E32B8450032ADBF /* main.m in Sources */,
+				CEDDFBC71E3FD24C00182A18 /* Util.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEDDFBC81E3FDA3500182A18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEDDFBD01E3FDA3500182A18 /* NotificationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +499,36 @@
 			};
 			name = Release;
 		};
+		CEDDFBD31E3FDA3500182A18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				INFOPLIST_FILE = MarketFoxNotificationExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marketfox.MarketFoxExample.MarketFoxNotificationExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CEDDFBD41E3FDA3500182A18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				INFOPLIST_FILE = MarketFoxNotificationExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marketfox.MarketFoxExample.MarketFoxNotificationExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -455,6 +558,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		CEDDFBD21E3FDA3500182A18 /* Build configuration list for PBXNativeTarget "MarketFoxNotificationExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEDDFBD31E3FDA3500182A18 /* Debug */,
+				CEDDFBD41E3FDA3500182A18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

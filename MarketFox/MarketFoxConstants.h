@@ -25,4 +25,6 @@ static  NSString    *const  kEmail              =   @"customer_email";
 static  NSString    *const  kEventName          =   @"event_name";
 static  NSString    *const  kEventValue         =   @"event_value";
 
+static  NSString   *const  kMarketFoxCategoryIdentifier =       @"MARKETFOXNOTIFICATION";
+
 #endif /* MarketFoxConstants_h */
