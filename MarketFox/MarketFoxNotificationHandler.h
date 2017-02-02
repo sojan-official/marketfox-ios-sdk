@@ -16,7 +16,7 @@
 
 @interface MarketFoxNotificationHandler : NSObject
 
-+ (NSSet *)marketFoxCategory;
++ (id)marketFoxCategory;
 + (BOOL)isMarketFoxNotification:(NSDictionary *)payload;
 
 @end

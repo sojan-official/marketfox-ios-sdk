@@ -12,7 +12,7 @@
 
 + (UNNotificationCategory *)categoryForNotificationExtension{
     
-    UNNotificationCategory  *category   =   [UNNotificationCategory categoryWithIdentifier:kMarketFoxCategoryIdentifier actions:nil intentIdentifiers:nil options:UNNotificationCategoryOptionNone];
+    UNNotificationCategory  *category   =   [UNNotificationCategory categoryWithIdentifier:kMarketFoxCategoryIdentifier actions:@[] intentIdentifiers:@[] options:UNNotificationCategoryOptionNone];
     return category;
 }
                                              
@@ -22,7 +22,7 @@
     return category;
 }
 
-+ (NSSet *)marketFoxCategory{
++ (id)marketFoxCategory{
 
     if([MarketFoxUtil isDeviceVersionGreaterThanOrEqual:10]){
         return [MarketFoxNotificationHandler categoryForNotificationExtension];

@@ -14,6 +14,11 @@
 #import "MarketFoxConstants.h"
 #import "MarketFoxUtil.h"
 
+@interface NSMutableDictionary (MarketFox)
+
+- (void)skipObjectWithNullValues:(id)anObject   key:(NSString *)key;
+
+@end
 
 @interface MarketFox ()<MarketFoxLocationManagerDelegate>
 
@@ -39,7 +44,7 @@
 - (id)init{
     self    =   [super init];
     {
-        [[MarketFoxPersistance persistanceInstance] saveObject:[self generateUniqueCustomerID] forKey:kMFCustomerID];
+        [self setCustomerID];
         
         [MarketFoxLocationManager locationManagerInstance].delegate =   self;
         
@@ -58,27 +63,21 @@
     
     NSMutableDictionary *dictionary =   [NSMutableDictionary dictionary];
     
-    [dictionary setObject:[self getAppID] forKey:kAppID];
+    [dictionary skipObjectWithNullValues:[self getAppID] key:kAppID];
     
-    [dictionary setObject:[self getCustomerID] forKey:kSessionID];
+    [dictionary skipObjectWithNullValues:[self getCustomerID] key:kSessionID];
     
-    if(self.latitude){
-        [dictionary setObject:[NSNumber numberWithDouble:self.latitude] forKey:kLocationLatitude];
-    }
+    [dictionary skipObjectWithNullValues:[NSNumber numberWithDouble:self.latitude] key:kLocationLatitude];
     
-    if(self.longitude){
-        [dictionary setObject:[NSNumber numberWithDouble:self.longitude] forKey:kLocationLongitude];
-    }
+    [dictionary skipObjectWithNullValues:[NSNumber numberWithDouble:self.longitude] key:kLocationLongitude];
     
-    if(self.deviceToken){
-        [dictionary setObject:self.deviceToken forKey:kAPNSID];
-    }
+    [dictionary skipObjectWithNullValues:self.deviceToken key:kAPNSID];
     
-    [dictionary setObject:[NSNumber numberWithInteger:[MarketFoxUtil getTimeZoneOffset]] forKey:kTimeZoneOffset];
+    [dictionary skipObjectWithNullValues:[NSNumber numberWithInteger:[MarketFoxUtil getTimeZoneOffset]] key:kTimeZoneOffset];
     
-    [dictionary setObject:[MarketFoxUtil getCorrectedLanguage] forKey:kLanguage];
+    [dictionary skipObjectWithNullValues:[MarketFoxUtil getCorrectedLanguage] key:kLanguage];
     
-    [dictionary setObject:[MarketFoxUtil carrierName] forKey:kCarrier];
+    [dictionary skipObjectWithNullValues:[MarketFoxUtil carrierName] key:kCarrier];
     
     [[MarketFoxAPI apiInstance] addCustomer:dictionary success:^{
         
@@ -93,13 +92,15 @@
     
     NSMutableDictionary *dictionary =   [NSMutableDictionary dictionary];
     
-    [dictionary setObject:[self getAppID] forKey:kAppID];
+    [dictionary skipObjectWithNullValues:[self getAppID] key:kAppID];
     
-    [dictionary setObject:[self getCustomerID] forKey:kSessionID];
+    [dictionary skipObjectWithNullValues:[self getCustomerID] key:kSessionID];
     
-    [dictionary setObject:name forKey:kEventName];
+    [dictionary skipObjectWithNullValues:name key:kEventName];
     
-    [dictionary setObject:value forKey:kEventValue];
+    [dictionary skipObjectWithNullValues:value key:kEventValue];
+    
+    [dictionary skipObjectWithNullValues:self.deviceToken key:kAPNSID];
     
     [[MarketFoxAPI apiInstance] addEvent:dictionary success:^{
         
@@ -126,6 +127,15 @@
     return [[MarketFoxPersistance persistanceInstance] objectForKey:kMFCustomerID];
 }
 
+- (void)setCustomerID{
+    NSString    *uniqueCustomerID   =   [self getCustomerID];
+    
+    if(!uniqueCustomerID){
+        uniqueCustomerID    =   [self generateUniqueCustomerID];
+        [[MarketFoxPersistance persistanceInstance] saveObject:uniqueCustomerID forKey:kMFCustomerID];
+    }
+}
+
 - (void)updateLocation:(double)latitude longitude:(double)longitude{
     self.latitude   =   latitude;
     self.longitude  =   longitude;
@@ -144,6 +154,25 @@
 
 - (BOOL)isMarketFoxNotification:(NSDictionary *)userInfo{
     return [MarketFoxNotificationHandler isMarketFoxNotification:userInfo];
+}
+
+@end
+
+@implementation NSMutableDictionary (MarketFox)
+
+- (void)skipObjectWithNullValues:(id)anObject   key:(NSString *)key{
+    
+    if(!anObject){
+        return;
+    }
+    
+    if([anObject isKindOfClass:[NSString class]]){
+        NSString    *mfString   =   anObject;
+        if(mfString.length<=0){
+            return;
+        }
+    }
+    [self setObject:anObject forKey:key];
 }
 
 @end

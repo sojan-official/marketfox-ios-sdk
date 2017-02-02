@@ -65,6 +65,7 @@
 		CE3F16931E33CC810032ADBF /* MarketFoxUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketFoxUtil.m; sourceTree = "<group>"; };
 		CE3F16951E33CE060032ADBF /* MarketFoxLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketFoxLocationManager.h; sourceTree = "<group>"; };
 		CE3F16961E33CE060032ADBF /* MarketFoxLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketFoxLocationManager.m; sourceTree = "<group>"; };
+		CEBA13481E43C3FC00796AD5 /* MarketFoxExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MarketFoxExample.entitlements; sourceTree = "<group>"; };
 		CEDDFBC21E3FC48400182A18 /* MarketFoxNotificationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketFoxNotificationHandler.h; sourceTree = "<group>"; };
 		CEDDFBC31E3FC48400182A18 /* MarketFoxNotificationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketFoxNotificationHandler.m; sourceTree = "<group>"; };
 		CEDDFBC51E3FD24C00182A18 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
@@ -145,6 +146,7 @@
 		CE3F166F1E32B8450032ADBF /* MarketFoxExample */ = {
 			isa = PBXGroup;
 			children = (
+				CEBA13481E43C3FC00796AD5 /* MarketFoxExample.entitlements */,
 				CE3F16731E32B8450032ADBF /* AppDelegate.h */,
 				CE3F16741E32B8450032ADBF /* AppDelegate.m */,
 				CE3F16761E32B8450032ADBF /* ViewController.h */,
@@ -257,7 +259,11 @@
 					CE3F166D1E32B8450032ADBF = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = NEJM235229;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -265,6 +271,7 @@
 					};
 					CEDDFBCB1E3FDA3500182A18 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = NEJM235229;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -470,8 +477,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MarketFoxExample/MarketFoxExample.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Sony Mathew (4V3G2WH3Q6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sony Mathew (4V3G2WH3Q6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MarketFoxExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -486,6 +494,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MarketFoxExample/MarketFoxExample.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MarketFoxExample/Info.plist;
@@ -505,6 +514,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = NEJM235229;
 				INFOPLIST_FILE = MarketFoxNotificationExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -520,6 +530,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = NEJM235229;
 				INFOPLIST_FILE = MarketFoxNotificationExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -566,6 +577,7 @@
 				CEDDFBD41E3FDA3500182A18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
