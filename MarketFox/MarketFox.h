@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger,MFNotificationStatus){
+    MF_NOTIFICATION_RECEIVED,
+    MF_NOTIFICATION_CLICKED
+};
+
 @interface MarketFox : NSObject
 
 + (instancetype)instance;
@@ -19,5 +24,11 @@
 - (NSSet *)configureMarketFoxNotificationCategories;
 
 - (BOOL)isMarketFoxNotification:(NSDictionary *)userInfo;
+
+- (void)configureEmail:(NSString *)email;
+
+- (void)updateCustomer:(NSDictionary *)details;
+
+- (void)updateNotificationStatus:(MFNotificationStatus)status payload:(NSDictionary *)payload;
 
 @end

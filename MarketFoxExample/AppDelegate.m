@@ -87,4 +87,12 @@
     
 }
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    //To test Notification Received API.
+    
+    if([[MarketFox instance] isMarketFoxNotification:userInfo]){
+        [[MarketFox instance] updateNotificationStatus:MF_NOTIFICATION_RECEIVED payload:userInfo];
+    }
+}
+
 @end

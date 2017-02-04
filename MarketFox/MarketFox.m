@@ -67,6 +67,8 @@
     
     [dictionary skipObjectWithNullValues:[self getCustomerID] key:kSessionID];
     
+    [dictionary skipObjectWithNullValues:[self getEmail] key:kEmailID];
+    
     [dictionary skipObjectWithNullValues:[NSNumber numberWithDouble:self.latitude] key:kLocationLatitude];
     
     [dictionary skipObjectWithNullValues:[NSNumber numberWithDouble:self.longitude] key:kLocationLongitude];
@@ -156,6 +158,71 @@
     return [MarketFoxNotificationHandler isMarketFoxNotification:userInfo];
 }
 
+- (void)configureEmail:(NSString *)email{
+        
+    if(![MarketFoxUtil isValidEmail:email]){
+        return;
+    }
+    
+    NSString *emailString    =   [email stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    if(emailString){
+        emailString =   [emailString lowercaseString];
+    }
+    
+    [[MarketFoxPersistance persistanceInstance]  saveObject:emailString forKey:kMFCustomerEmail];
+}
+
+- (NSString *)getEmail{
+    return [[MarketFoxPersistance persistanceInstance] objectForKey:kMFCustomerEmail];
+}
+
+- (void)updateCustomer:(NSDictionary *)details{
+    NSMutableDictionary *dictionary =   [NSMutableDictionary dictionary];
+    NSString    *userConfiguredEmail    =   [details objectForKey:kEmailOnUpdateCustomer];
+    
+    if(userConfiguredEmail){
+        [self configureEmail:userConfiguredEmail];
+    }
+    
+    [dictionary skipObjectWithNullValues:[self getEmail] key:kMFCustomerEmail];
+    [dictionary skipObjectWithNullValues:[self getAppID] key:kAppID];
+    [dictionary skipObjectWithNullValues:[self getCustomerID] key:kSessionID];
+    [dictionary skipObjectWithNullValues:self.deviceToken key:kAPNSID];
+    [dictionary skipObjectWithNullValues:details key:kCustomer];
+    
+    [[MarketFoxAPI apiInstance] addCustomer:dictionary success:^{
+        
+    } failure:^{
+        
+    }];
+}
+
+- (void)updateNotificationStatus:(MFNotificationStatus)status payload:(NSDictionary *)payload{
+    
+    NSMutableDictionary *dictionary =   [NSMutableDictionary dictionary];
+    
+    [dictionary skipObjectWithNullValues:[self getAppID] key:kAppID];
+    [dictionary skipObjectWithNullValues:[self getCustomerID] key:kSessionID];
+    [dictionary skipObjectWithNullValues:self.deviceToken key:kAPNSID];
+    [dictionary skipObjectWithNullValues:[NSNumber numberWithBool:true] key:kNotificationOpened];
+    
+    if(status==MF_NOTIFICATION_RECEIVED){
+        [[MarketFoxAPI apiInstance] addView:dictionary success:^{
+            
+        } failure:^{
+            
+        }];
+    }
+    else if(status==MF_NOTIFICATION_CLICKED){
+        [[MarketFoxAPI apiInstance] addClick:dictionary success:^{
+            
+        } failure:^{
+            
+        }];
+    }
+}
+
 @end
 
 @implementation NSMutableDictionary (MarketFox)
@@ -169,6 +236,12 @@
     if([anObject isKindOfClass:[NSString class]]){
         NSString    *mfString   =   anObject;
         if(mfString.length<=0){
+            return;
+        }
+    }
+    else if([anObject isKindOfClass:[NSDictionary class]]){
+        NSDictionary    *mfDictionary   =   anObject;
+        if([[mfDictionary allKeys] count]<=0){
             return;
         }
     }

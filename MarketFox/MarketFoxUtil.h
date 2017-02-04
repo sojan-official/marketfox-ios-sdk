@@ -20,4 +20,6 @@
 
 + (BOOL)isDeviceVersionGreaterThanOrEqual:(NSInteger)version;
 
++ (BOOL)isValidEmail:(NSString *)email;
+
 @end
