@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://www.marketfox.io'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Sojan' => 'sojan@marketfox.io' }
+  s.author           = { 'Sojan' => 'sojan@marketfox.io’,’Shanippt’	=>  ‘shanippt@gmail.com’}
   s.source           = { :git => 'https://github.com/sojan-official/marketfox-ios.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
