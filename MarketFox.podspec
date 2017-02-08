@@ -10,5 +10,5 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.source_files = 'MarketFoxSDK/*.{h,m}'
   s.ios.vendored_library = 'MarketFoxSDK/libMarketFox.a'
-  s.framework        =  'CoreLocation','UserNotifications','UIKit','CoreTelephony'
+  s.frameworks        =  'CoreLocation','UserNotifications','UIKit','CoreTelephony'
 end
