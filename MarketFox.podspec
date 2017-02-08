@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'MarketFox'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'Marketing Automation Simplified'
   s.description      = 'Marketfox helps you to convert more visitors into customers by keeping track of their events and automating your marketing campaigns'
   s.homepage         = 'https://www.marketfox.io'
