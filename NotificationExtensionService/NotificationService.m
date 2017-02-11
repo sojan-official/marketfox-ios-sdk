@@ -1,14 +1,13 @@
 //
 //  NotificationService.m
-//  MarketFoxNotificationExtension
+//  NotificationExtensionService
 //
-//  Created by user on 31/01/17.
+//  Created by user on 11/02/17.
 //  Copyright © 2017 user. All rights reserved.
 //
 
 #import "NotificationService.h"
-#import <Foundation/NSURLSession.h>
-#import <Foundation/NSFileManager.h>
+#import <UIKit/UIKit.h>
 
 @interface NotificationService ()
 
@@ -38,7 +37,7 @@
                 
                 NSString    *tmpDirectory  =   NSTemporaryDirectory();
                 
-                NSString   *tmpFile  =  [NSString stringWithFormat:@"file://%@%@",tmpDirectory,[attachmentUrl lastPathComponent]];
+                NSString   *tmpFile  =  [NSString stringWithFormat:@"file://%@%@",tmpDirectory,[[attachmentUrl lastPathComponent] stringByReplacingOccurrencesOfString:@" " withString:@""]];
                 
                 NSURL   *tmpUrl =   [NSURL URLWithString:tmpFile];
                 

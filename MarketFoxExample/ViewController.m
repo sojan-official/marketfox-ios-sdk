@@ -22,12 +22,14 @@
 - (IBAction)subscribeToMarketFox:(id)sender {
     
     [[MarketFox instance] postEvent:@"clicked_subscribe" value:@"1"];
-    
-    [[MarketFox instance] updateCustomer:@{@"first_name":@"Tim",@"last_name":@"Cook",@"email":@"test@gmail.com"}];
 }
 - (IBAction)unsubscribeToMarketFox:(id)sender {
     
     [[MarketFox instance] postEvent:@"clicked_unsubscribe" value:@"1"];
+}
+
+- (void)updateCustomer{
+    [[MarketFox instance] updateCustomer:@{@"first_name":@"Tim",@"last_name":@"Cook",@"email":@"test@gmail.com"}];
 }
 
 - (void)didReceiveMemoryWarning {

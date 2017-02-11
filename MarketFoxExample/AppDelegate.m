@@ -23,9 +23,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    [MarketFox instance];
+    [[MarketFox instance]startSession];
     [[MarketFox instance] configureEmail:@"test@gmail.com"];
     [self registerForPushNotification];
+    [[MarketFox instance] postEvent:@"app_open" value:@"1"];
     
     return YES;
     
@@ -47,9 +48,6 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    
-    [[MarketFox instance] postEvent:@"app_open" value:@"1"];
-    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -85,16 +83,21 @@
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
     
     NSDictionary    *userInfo   =   response.notification.request.content.userInfo;
-    
-    NSLog(@"Mutable Content %@",userInfo[@"aps"][@"mutable-content"]);
-    
+
     if([response.actionIdentifier isEqualToString:UNNotificationDefaultActionIdentifier]){
         if([[MarketFox instance] isMarketFoxNotification:userInfo]){
             [[MarketFox instance] updateNotificationStatus:MF_NOTIFICATION_CLICKED payload:userInfo];
-            [[MarketFox instance] handleDeepLinking:userInfo];
         }
     }
     completionHandler();
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+    
+    NSDictionary    *userInfo   =   notification.request.content.userInfo;
+    if([[MarketFox instance] isMarketFoxNotification:userInfo]){
+        completionHandler(UNNotificationPresentationOptionAlert);
+    }
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
@@ -104,7 +107,6 @@
     if(applicationState==UIApplicationStateInactive){
         if([[MarketFox instance] isMarketFoxNotification:userInfo]){
             [[MarketFox instance] updateNotificationStatus:MF_NOTIFICATION_CLICKED payload:userInfo];
-            [[MarketFox instance] handleDeepLinking:userInfo];
         }
     }
     

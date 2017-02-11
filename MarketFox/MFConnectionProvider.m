@@ -52,16 +52,10 @@
     
     [request setHTTPBody:[self convertToJson:parameters]];
 
-    NSLog(@"Data %@",[self convertToJson:parameters]);
-    
     [[[MFURLSession  sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         if(!error){
             if([data length]>=1){
-                
-                NSHTTPURLResponse   *internalUrlRequest =   (NSHTTPURLResponse *)response;
-                
-                
                 success([self convertToFoundationObject:data]);
             }
         }

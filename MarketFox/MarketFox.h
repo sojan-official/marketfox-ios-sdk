@@ -17,6 +17,8 @@ typedef NS_ENUM(NSInteger,MFNotificationStatus){
 
 + (instancetype)instance;
 
+- (void)startSession;
+
 - (void)postEvent:(NSString *)name value:(NSString *)value;
 
 - (void)updateDeviceToken:(NSData *)deviceToken;
@@ -30,7 +32,5 @@ typedef NS_ENUM(NSInteger,MFNotificationStatus){
 - (void)updateCustomer:(NSDictionary *)details;
 
 - (void)updateNotificationStatus:(MFNotificationStatus)status payload:(NSDictionary *)payload;
-
-- (void)handleDeepLinking:(NSDictionary *)payload;
 
 @end

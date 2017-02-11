@@ -44,17 +44,17 @@
 - (id)init{
     self    =   [super init];
     {
-        [self setCustomerID];
-        
         [MarketFoxLocationManager locationManagerInstance].delegate =   self;
         
         self.latitude   =   0;
         
         self.longitude  =   0;
-        
-//        [self addCustomerDetail];
     }
     return self;
+}
+
+- (void)startSession{
+    [self setCustomerID];
 }
 
 - (void)addCustomerDetail{
@@ -199,7 +199,7 @@
 }
 
 - (void)updateNotificationStatus:(MFNotificationStatus)status payload:(NSDictionary *)payload{
-    
+
     NSString    *campaignId =   payload[@"campaign_id"];
     
     NSMutableDictionary *dictionary =   [NSMutableDictionary dictionary];
@@ -223,6 +223,8 @@
         } failure:^{
             
         }];
+        
+        [self handleDeepLinking:payload];
     }
 }
 
@@ -233,7 +235,7 @@
     NSURL   *deepLinkUrl    =   [NSURL URLWithString:string];
     
     if([MarketFoxUtil isDeviceVersionGreaterThanOrEqual:10]){
-        [[UIApplication sharedApplication] openURL:deepLinkUrl options:nil completionHandler:nil];
+        [[UIApplication sharedApplication] openURL:deepLinkUrl options:@{} completionHandler:nil];
     }
     else{
         if([[UIApplication sharedApplication] canOpenURL:deepLinkUrl])

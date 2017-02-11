@@ -9,6 +9,6 @@
 #ifndef MFConnectionProviderConstants_h
 #define MFConnectionProviderConstants_h
 
-#define BASE_URL    @"https://staging.marketfox.co/ios/api/"
+#define BASE_URL    @"https://ios.marketfox.io/ios/api/"
 
 #endif /* MFConnectionProviderConstants_h */

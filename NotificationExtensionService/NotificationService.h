@@ -1,8 +1,8 @@
 //
 //  NotificationService.h
-//  MarketFoxNotificationExtension
+//  NotificationExtensionService
 //
-//  Created by user on 31/01/17.
+//  Created by user on 11/02/17.
 //  Copyright © 2017 user. All rights reserved.
 //
 
