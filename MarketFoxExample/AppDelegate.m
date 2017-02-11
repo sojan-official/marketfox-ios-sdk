@@ -23,6 +23,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [MarketFox instance];
+    [[MarketFox instance] configureEmail:@"test@gmail.com"];
     [self registerForPushNotification];
     
     return YES;
@@ -47,6 +49,7 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
     [[MarketFox instance] postEvent:@"app_open" value:@"1"];
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -81,18 +84,31 @@
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
     
+    NSDictionary    *userInfo   =   response.notification.request.content.userInfo;
+    
+    NSLog(@"Mutable Content %@",userInfo[@"aps"][@"mutable-content"]);
+    
+    if([response.actionIdentifier isEqualToString:UNNotificationDefaultActionIdentifier]){
+        if([[MarketFox instance] isMarketFoxNotification:userInfo]){
+            [[MarketFox instance] updateNotificationStatus:MF_NOTIFICATION_CLICKED payload:userInfo];
+            [[MarketFox instance] handleDeepLinking:userInfo];
+        }
+    }
+    completionHandler();
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
-    //To test Notification Received API.
+    UIApplicationState  applicationState    =   [UIApplication sharedApplication].applicationState;
     
-    if([[MarketFox instance] isMarketFoxNotification:userInfo]){
-        [[MarketFox instance] updateNotificationStatus:MF_NOTIFICATION_RECEIVED payload:userInfo];
+    if(applicationState==UIApplicationStateInactive){
+        if([[MarketFox instance] isMarketFoxNotification:userInfo]){
+            [[MarketFox instance] updateNotificationStatus:MF_NOTIFICATION_CLICKED payload:userInfo];
+            [[MarketFox instance] handleDeepLinking:userInfo];
+        }
     }
+    
+    completionHandler(UIBackgroundFetchResultNoData);
 }
 
 @end

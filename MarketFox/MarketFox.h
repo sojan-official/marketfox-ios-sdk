@@ -31,4 +31,6 @@ typedef NS_ENUM(NSInteger,MFNotificationStatus){
 
 - (void)updateNotificationStatus:(MFNotificationStatus)status payload:(NSDictionary *)payload;
 
+- (void)handleDeepLinking:(NSDictionary *)payload;
+
 @end

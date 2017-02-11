@@ -23,6 +23,7 @@
     
     [[MarketFox instance] postEvent:@"clicked_subscribe" value:@"1"];
     
+    [[MarketFox instance] updateCustomer:@{@"first_name":@"Tim",@"last_name":@"Cook",@"email":@"test@gmail.com"}];
 }
 - (IBAction)unsubscribeToMarketFox:(id)sender {
     

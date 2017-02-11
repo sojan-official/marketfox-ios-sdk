@@ -17,6 +17,7 @@ static  NSString    *const  kAppID              =   @"app_id";
 static  NSString    *const  kSessionID          =   @"user_session_key";
 static  NSString    *const  kEmailID            =   @"customer_email";
 static  NSString    *const  kAPNSID             =   @"gcm_id";
+static  NSString    *const  kCampaignID         =   @"campaign_id";
 static  NSString    *const  kLocationLatitude   =   @"lat";
 static  NSString    *const  kLocationLongitude  =   @"long";
 static  NSString    *const  kTimeZoneOffset     =   @"timezone";

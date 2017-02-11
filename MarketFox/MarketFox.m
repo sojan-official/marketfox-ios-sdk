@@ -52,7 +52,7 @@
         
         self.longitude  =   0;
         
-        [self addCustomerDetail];
+//        [self addCustomerDetail];
     }
     return self;
 }
@@ -151,7 +151,7 @@
 }
 
 - (NSSet *)configureMarketFoxNotificationCategories{
-    return [MarketFoxNotificationHandler marketFoxCategory];
+    return [NSSet setWithObject:[MarketFoxNotificationHandler marketFoxCategory]];
 }
 
 - (BOOL)isMarketFoxNotification:(NSDictionary *)userInfo{
@@ -200,12 +200,15 @@
 
 - (void)updateNotificationStatus:(MFNotificationStatus)status payload:(NSDictionary *)payload{
     
+    NSString    *campaignId =   payload[@"campaign_id"];
+    
     NSMutableDictionary *dictionary =   [NSMutableDictionary dictionary];
     
     [dictionary skipObjectWithNullValues:[self getAppID] key:kAppID];
     [dictionary skipObjectWithNullValues:[self getCustomerID] key:kSessionID];
     [dictionary skipObjectWithNullValues:self.deviceToken key:kAPNSID];
     [dictionary skipObjectWithNullValues:[NSNumber numberWithBool:true] key:kNotificationOpened];
+    [dictionary skipObjectWithNullValues:campaignId key:kCampaignID];
     
     if(status==MF_NOTIFICATION_RECEIVED){
         [[MarketFoxAPI apiInstance] addView:dictionary success:^{
@@ -220,6 +223,23 @@
         } failure:^{
             
         }];
+    }
+}
+
+- (void)handleDeepLinking:(NSDictionary *)payload{
+    NSString    *string =   payload[@"url"];
+    if(!string)
+        return;
+    NSURL   *deepLinkUrl    =   [NSURL URLWithString:string];
+    
+    if([MarketFoxUtil isDeviceVersionGreaterThanOrEqual:10]){
+        [[UIApplication sharedApplication] openURL:deepLinkUrl options:nil completionHandler:nil];
+    }
+    else{
+        if([[UIApplication sharedApplication] canOpenURL:deepLinkUrl])
+        {
+            [[UIApplication sharedApplication] openURL:deepLinkUrl];
+        }
     }
 }
 

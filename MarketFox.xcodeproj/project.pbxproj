@@ -21,10 +21,21 @@
 		CE3F16911E33A9500032ADBF /* MarketFoxPersistance.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3F16901E33A9500032ADBF /* MarketFoxPersistance.m */; };
 		CE3F16941E33CC810032ADBF /* MarketFoxUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3F16931E33CC810032ADBF /* MarketFoxUtil.m */; };
 		CE3F16971E33CE060032ADBF /* MarketFoxLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3F16961E33CE060032ADBF /* MarketFoxLocationManager.m */; };
+		CEAB2DDA1E4F21D100A36152 /* MarketFoxNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEDDFBCC1E3FDA3500182A18 /* MarketFoxNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CEDDFBC41E3FC48400182A18 /* MarketFoxNotificationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDDFBC31E3FC48400182A18 /* MarketFoxNotificationHandler.m */; };
 		CEDDFBC71E3FD24C00182A18 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDDFBC61E3FD24C00182A18 /* Util.m */; };
 		CEDDFBD01E3FDA3500182A18 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDDFBCF1E3FDA3500182A18 /* NotificationService.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CEAB2DDB1E4F21D100A36152 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE3F16561E32B8240032ADBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEDDFBCB1E3FDA3500182A18;
+			remoteInfo = MarketFoxNotificationExtension;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		CE3F165C1E32B8240032ADBF /* CopyFiles */ = {
@@ -35,6 +46,17 @@
 			files = (
 				CE3F16621E32B8240032ADBF /* MarketFox.h in CopyFiles */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEAB2DDD1E4F21D100A36152 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CEAB2DDA1E4F21D100A36152 /* MarketFoxNotificationExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -217,10 +239,12 @@
 				CE3F166A1E32B8450032ADBF /* Sources */,
 				CE3F166B1E32B8450032ADBF /* Frameworks */,
 				CE3F166C1E32B8450032ADBF /* Resources */,
+				CEAB2DDD1E4F21D100A36152 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CEAB2DDC1E4F21D100A36152 /* PBXTargetDependency */,
 			);
 			name = MarketFoxExample;
 			productName = MarketFoxExample;
@@ -351,6 +375,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CEAB2DDC1E4F21D100A36152 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CEDDFBCB1E3FDA3500182A18 /* MarketFoxNotificationExtension */;
+			targetProxy = CEAB2DDB1E4F21D100A36152 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CE3F16791E32B8450032ADBF /* Main.storyboard */ = {
@@ -514,9 +546,10 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				DEVELOPMENT_TEAM = NEJM235229;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Sony Mathew (4V3G2WH3Q6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MarketFoxNotificationExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.marketfox.MarketFoxExample.MarketFoxNotificationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -530,9 +563,10 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
-				DEVELOPMENT_TEAM = NEJM235229;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MarketFoxNotificationExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.marketfox.MarketFoxExample.MarketFoxNotificationExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
